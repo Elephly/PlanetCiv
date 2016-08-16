@@ -4,19 +4,39 @@
 
 public abstract class Unit
 {
-  int xpos, ypos;
-  boolean alive;
-  public Unit(int xp, int yp, boolean a)
-  {
+  
+  protected float xpos, ypos;
+  protected int size;
+  protected boolean alive, selected;
+  public boolean menuDisplay;
+  
+  public int getSize;
+  public float getX() { return xpos; }
+  public float getY() { return ypos; }
+  public int getSize() { return size; }
+  public boolean isAlive() {return alive; }
+  
+  public Unit(float xp, float yp, boolean a, int s)  
+{
     xpos =xp;
     ypos =yp;
     alive = a;
+    selected=false;
+    menuDisplay=false;
+    size=s;
   }
   
-  public void update(int updateX, int updateY)
+  public void change(int updateX, int updateY)
   {
     xpos+=updateX;
     ypos+=updateY;
+  }  
+  
+  
+  public void die()
+  {
+    alive=false;    
   }
-  public abstract void drawThis();
+  
+  public abstract void update();
 }
