@@ -44,6 +44,8 @@ If a planet has a small ellipse in the centre, the planet has been colonized by 
 
 To purchase upgrades for your planet, open the menu for the planet by right clicking it then Left click on the amount button.
 
+Press the escape key at any time to quit the game.
+
 ### Winning Objectives
 - Have at least 3 colonized planets have a level 3 settlement (Lunar City or higher)
 - Have collected 50,0000 resources in your bank
