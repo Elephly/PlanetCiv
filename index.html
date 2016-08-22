@@ -22,7 +22,7 @@
           // Success!
           var data = JSON.parse(request.responseText);
           for (var i = 0; i < data.assets.length; i++) {
-            if (data.assets[i].name === "planetciv-" + data.tag_name + "-windows.exe") {
+            if (data.assets[i].name === "planetciv-" + data.tag_name + "-windows.zip") {
               releaseWinButton = document.getElementById("win-release");
               if (releaseWinButton) {
                 releaseWinButton.setAttribute("href", data.assets[i].browser_download_url);
