@@ -1,6 +1,8 @@
 # S.P.A.C.E
 COMP1501 Project - A planetary colonization game!
 
+**NOTE**: REQUIRES JAVA RUNTIME ENVIRONMENT TO RUN RELEASE BUILDS!
+
 ### Contributors
 - Jacob Dyck
 - Luke Harper
