@@ -12,6 +12,43 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+    <script>
+      var request = new XMLHttpRequest();
+      
+      request.open('GET', 'https://api.github.com/repos/elephly/PlanetCiv/releases/latest', true);
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+          // Success!
+          var data = JSON.parse(request.responseText);
+          for (var i = 0; i < data.assets.length; i++) {
+            if (data.assets[i].name === "planetciv-" + data.tag_name + "-windows.exe") {
+              releaseWinButton = document.getElementById("win-release");
+              if (releaseWinButton) {
+                releaseWinButton.setAttribute("href", data.assets[i].browser_download_url);
+              }
+            } else if (data.assets[i].name === "planetciv-" + data.tag_name + "-macosx.tar.gz") {
+              releaseMacButton = document.getElementById("mac-release");
+              if (releaseMacButton) {
+                releaseMacButton.setAttribute("href", data.assets[i].browser_download_url);
+              }
+            } else if (data.assets[i].name === "planetciv-" + data.tag_name + "-linux.tar.gz") {
+              releaseLinButton = document.getElementById("lin-release");
+              if (releaseLinButton) {
+                releaseLinButton.setAttribute("href", data.assets[i].browser_download_url);
+              }
+            } else {
+              console.error("Found unexpected asset: " + data.assets[i]);
+            }
+          }
+        } else {
+          // We reached our target server, but it returned an error
+          console.error(request);
+        }
+      };
+      
+      request.send();
+    </script>
 
     <title>PlanetCiv by Elephly</title>
   </head>
@@ -32,6 +69,8 @@
 <a id="planetciv-space" class="anchor" href="#planetciv-space" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PlanetCiv: S.P.A.C.E</h1>
 
 <p>COMP1501 Project - A planetary colonization game!</p>
+
+<h6>REQUIRES JAVA RUNTIME ENVIRONMENT TO RUN RELEASE BUILDS!</h6>
 
 <h3>
 <a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributors</h3>
@@ -103,6 +142,22 @@
         </section>
 
         <aside id="sidebar">
+          <a id="win-release" href="https://github.com/Elephly/PlanetCiv/releases/latest" class="button">
+            <small>Latest Release</small>
+            windows
+          </a>
+          <a id="lin-release" href="https://github.com/Elephly/PlanetCiv/releases/latest" class="button">
+            <small>Latest Release</small>
+            linux
+          </a>
+          <a id="mac-release" href="https://github.com/Elephly/PlanetCiv/releases/latest" class="button">
+            <small>Latest Release</small>
+            linux
+          </a>
+          <a href="https://github.com/Elephly/PlanetCiv/releases/latest" class="button">
+            <small>Latest Release</small>
+            notes
+          </a>
           <a href="https://github.com/Elephly/PlanetCiv/zipball/master" class="button">
             <small>Download</small>
             .zip file
